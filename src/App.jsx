@@ -1,11 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React,{createContext,useContext, useState } from "react";
 
 
-const messageContext= createContext();
+const MessageContext= createContext();
 
 function ChildComponent(){
-    const message=useContext(messageContext);
+    const message=useContext(MessageContext);
   return(
     <div>
       <h2>Child Component</h2>
@@ -21,9 +20,9 @@ function App(){
   return(
     <div>
       <h1>Parend Component</h1>
-      <messageContext.provider value={message}>
+      <MessageContext.Provider value={{message:message}}>
       <ChildComponent />
-      </messageContext.provider>
+      </MessageContext.Provider>
     </div>
   )
 }
